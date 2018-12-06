@@ -75,7 +75,6 @@ public class ArthropodEggEntityListener implements Listener {
 			targetPlayer.sendMessage( "Total =" + targetPercentage * 100 + "%, random% is " + randomNum * 100 );
 		}
 
-		// TODO: Switch away from legacy Monster Egg drop
 		// Check if egg should be spawned
 		if( randomNum < targetPercentage )
 		{

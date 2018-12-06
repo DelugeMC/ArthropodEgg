@@ -6,7 +6,7 @@
   <groupId>com.fndragon</groupId>
   <artifactId>ArthropodEgg</artifactId>
   <packaging>jar</packaging>
-  <version>1.6.0</version>
+  <version>2.0.0</version>
   <name>ArthropodEgg</name>
   <url>https://github.com/DevotedMC/ArthropodEgg</url>
   
@@ -34,7 +34,7 @@
     <dependency>
       <groupId>org.spigotmc</groupId>
       <artifactId>spigot</artifactId>
-      <version>1.12-R0.1-SNAPSHOT</version>
+      <version>1.13.2-R0.1-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>

@@ -75,11 +75,12 @@ public class ArthropodEggEntityListener implements Listener {
 			targetPlayer.sendMessage( "Arth[" + levelOfArthropod + "], Loot[" + levelOfLooting + "]");
 			targetPlayer.sendMessage( "Total =" + targetPercentage * 100 + "%, random% is " + randomNum * 100 );
 		}
-		
+
+		// TODO: Switch away from legacy Monster Egg drop
 		// Check if egg should be spawned
 		if( randomNum < targetPercentage )
 		{
-			ItemStack item = new ItemStack(Material.MONSTER_EGG, 1);
+			ItemStack item = new ItemStack(Material.LEGACY_MONSTER_EGG, 1);
 			SpawnEggMeta spawnMeta = (SpawnEggMeta) item.getItemMeta();
 			spawnMeta.setSpawnedType(event.getEntityType());
 			item.setItemMeta(spawnMeta);

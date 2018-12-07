@@ -2,6 +2,6 @@
 # eggArthropodPercentage is out of 1.0
 eggArthropodPercentage: 0.03
 eggLootingPercentage: 0.02
-eggEntityIDList: [31, 32, 65, 90, 91, 92, 93, 94, 95, 96, 98, 100, 101, 103, 105, 120]
+eggEntityIDList: ["donkey", "mule", "bat", "pig", "sheep", "cow", "chicken", "squid", "wolf", "mooshroom", "ocelot", "horse", "rabbit", "llama", "parrot", "villager", "turtle", "dolphin", "polar_bear", "cod", "salmon", "tropical_fish", "pufferfish"]
 eggDebug: false
 eggRemoveDrops: true

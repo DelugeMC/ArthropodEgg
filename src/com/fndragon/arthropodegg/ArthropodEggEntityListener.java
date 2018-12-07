@@ -3,14 +3,17 @@ package com.fndragon.arthropodegg;
 import java.util.Map;
 import java.util.logging.Level;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Ageable;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 /**
  * @author Randy
@@ -35,8 +38,8 @@ public class ArthropodEggEntityListener implements Listener {
 			return;
 		}
 		
-		Short currentEntityID = event.getEntity().getType().getTypeId();
-		if( false == plugin.getConfig().getShortList("eggEntityIDList").contains( currentEntityID ) ) {
+		EntityType currentEntityID = event.getEntityType();
+		if( !plugin.getConfig().getStringList("eggEntityIDList").contains( currentEntityID.name() ) ) {
 			return;
 		}
 
@@ -44,7 +47,7 @@ public class ArthropodEggEntityListener implements Listener {
 		if( event.getEntity() instanceof Ageable )
 		{
 			Ageable ageableEntity = (Ageable) event.getEntity();
-			if( ageableEntity.isAdult() == false ) {
+			if( !ageableEntity.isAdult() ) {
 				return;  // NOPE.
 			}
 		}
@@ -237,6 +240,9 @@ public class ArthropodEggEntityListener implements Listener {
 					break;
 				default:
 					item = new ItemStack(Material.EGG,1);
+					ItemMeta badEggMeta = item.getItemMeta();
+					badEggMeta.setDisplayName(ChatColor.DARK_RED + "Bad Egg");
+					item.setItemMeta(badEggMeta);
 					break;
 			}
 			if( plugin.getConfig().getBoolean("eggRemoveDrops")) {

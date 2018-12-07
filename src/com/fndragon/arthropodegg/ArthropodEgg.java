@@ -5,7 +5,6 @@ import java.util.List;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
-import com.fndragon.arthropodegg.ArthropodEggEntityListener;
 
 /**
  * @author Randy 
@@ -50,36 +49,36 @@ public class ArthropodEgg extends JavaPlugin {
 					sender.sendMessage("ArthropodEgg debug disabled");
 				}
 			} else if( args[0].equalsIgnoreCase("list")) {
-				for( Short id : this.getConfig().getShortList("eggEntityIDList")) {
-					sender.sendMessage( "ID #" + id + ": " + org.bukkit.entity.EntityType.fromId( (int) id).getName());
+				for( String id : this.getConfig().getStringList("eggEntityIDList")) {
+					sender.sendMessage( id );
 				}
 			} else if( args[0].equalsIgnoreCase("add")) {
 				if( args.length < 2) {
 					return false;
 				}
 				// Future expansion:  handle multiple inputs at once
-				List<Short> idList = this.getConfig().getShortList("eggEntityIDList");
-				Short idToAdd = (short) Short.parseShort( args[1] );
+				List<String> idList = this.getConfig().getStringList("eggEntityIDList");
+				String idToAdd = args[1];
 				if( idList.contains( idToAdd )) {
 					sender.sendMessage( "Already in list");
 				} else {
 					idList.add( idToAdd );
 					this.getConfig().set("eggEntityIDList", idList);
-					sender.sendMessage( "ID #" +idToAdd+ ": " + org.bukkit.entity.EntityType.fromId((int)idToAdd).getName() + " added");
+					sender.sendMessage(idToAdd + " added");
 				}
 			} else if( args[0].equalsIgnoreCase("remove")) {
 				if( args.length < 2) {
 					return false;
 				}
 				// Future expansion:  handle multiple inputs at once
-				List<Short> idList = this.getConfig().getShortList("eggEntityIDList");
-				Short idToDel = (short) Short.parseShort( args[1] );
-				if( false == idList.contains( idToDel )) {
+				List<String> idList = this.getConfig().getStringList("eggEntityIDList");
+				String idToDel = args[1];
+				if( !idList.contains( idToDel )) {
 					sender.sendMessage( "Not in list");
 				} else {
 					idList.remove( idToDel );
 					this.getConfig().set("eggEntityIDList", idList);
-					sender.sendMessage( "ID #" +idToDel+ ": " + org.bukkit.entity.EntityType.fromId((int)idToDel).getName() + " removed");
+					sender.sendMessage(idToDel + " removed");
 				}
 			} else if( args[0].equalsIgnoreCase("reset")) {
 				saveResource("config.yml", true);
